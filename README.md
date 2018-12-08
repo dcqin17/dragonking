@@ -7,3 +7,7 @@ The dragonking Python package implements published statistical tests and test st
 ## Installation
 
 ## Example use
+
+## Contributions
+
+Please report any bugs, suggestions, or feature requests at the repository's [issues page](https://github.com/dcqin17/dragonking). We welcome any contributions in the form of pull requests from forked versions of this repo.
