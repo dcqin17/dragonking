@@ -4,12 +4,12 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="example_pkg",
-    version="0.0.1",
-    author="Daniel Qin",
+    name="dragonking",
+    version="0.1.0",
+    author="Daniel Qin, Raoul R. Wadhwa, Peter Erdi",
     author_email="k17dq01@kzoo.edu",
-    description="Dragon King Statistical Analysis package",
-    long_description=long_description,
+    description="Statistical tests for identification of dragon kings",
+    long_description="",
     long_description_content_type="text/markdown",
     url="https://github.com/dcqin17/dragonking",
     packages=setuptools.find_packages(),
