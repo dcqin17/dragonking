@@ -9,8 +9,6 @@ setuptools.setup(
     author="Daniel Qin, Raoul R. Wadhwa, Peter Erdi",
     author_email="k17dq01@kzoo.edu",
     description="Statistical tests for identification of dragon kings",
-    long_description="",
-    long_description_content_type="text/markdown",
     url="https://github.com/dcqin17/dragonking",
     packages=setuptools.find_packages(),
     classifiers=[
