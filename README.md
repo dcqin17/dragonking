@@ -1,12 +1,12 @@
-# dragonking (Python)
+# dragonking (A Python Package)
 
 ## Purpose
 
-The `dragonking` Python package implements published statistical tests and test statistics for identification of dragon kings.
+The dragonking python package implements published statistical tests and test statistics for identification of dragon kings.
 
 ## Installation
 
-To install the `dragonking` Python package with `pip`, simply run:
+To install the dragonking python package with pip, simply run:
 
 ```
 pip install dragonking
