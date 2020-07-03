@@ -1,12 +1,6 @@
-#####SUM-SUM (SS) TEST STATISTIC#####
+import numpy as np
 
-#sum-sum
-#sum-robust-Sum
-#max-sum
-#max-robust-sum
-#dixon
-
-def ss_stat(vals,r):
+def ss_stat(vals, r, m=0):
     """Calculates sum-sum test statistic.
 
     Use the sum-sum test statistic to determine whehter there is
@@ -55,7 +49,7 @@ def srs_stat(vals, r, m):
     test_stat = float(sum(vals[0:r])) / sum(vals[(m):len(vals)])
     return(test_stat)
 
-def ms_stat(vals, r):
+def ms_stat(vals, r, m = 0):
     """Calculates max-sum test statistic.
 
     Use the max-sum test statistic to determine whehter there is
@@ -108,7 +102,7 @@ def mrs_stat(vals, r, m):
     test_stat = float(vals[r-1])/ sum(vals[(m):len(vals)])
     return(test_stat)
 
-def dixon_stat(vals, r, m=0):
+def dixon_stat(vals, r, m = 0):
     """Calculates dixon test statistic.
 
     Use the dixon test statistic to determine whehter there is
@@ -126,12 +120,11 @@ def dixon_stat(vals, r, m=0):
     test_stat = float(vals[0]) / vals[r]
     return(test_stat)
 
-def inward(teststat, data, r, m, alpha=.15):
+def inward(teststat, data, r, m, alpha = .15):
     outliers = np.zeros(r)
 
     j = 0
-
-    while (j <r):
+    while (j < r):
         vals1 = data[j:len(data)]
         test_stat = teststat(vals1, r, m)
         if (test_stat > alpha):
@@ -140,15 +133,14 @@ def inward(teststat, data, r, m, alpha=.15):
             return(outliers)
         j +=1
 
-    else:
-        print("error:: please enter 'ss_stat', 'srs_stat', 'ms_stat', 'mrs_stat', or 'dixon' ")
+    return outliers
 
 
-def outward(teststat, data, r, m, alpha=.15):
+def outward(teststat, data, r, m, alpha = .15):
     outliers = np.zeros(r)
     j = 0
 
-    while (j <r):
+    while (j < r):
         vals1 = data[r-j-1:len(data)]
         test_stat = teststat(vals1, r, m)
         if (test_stat > alpha):
@@ -157,7 +149,4 @@ def outward(teststat, data, r, m, alpha=.15):
             return(outliers)
         j +=1
 
-    else:
-        print("error:: please enter 'ss_stat', 'srs_stat', 'ms_stat', 'mrs_stat', or 'dixon' ")
-
-    pass
+    return outliers
