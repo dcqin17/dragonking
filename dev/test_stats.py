@@ -125,3 +125,39 @@ def dixon_stat(vals, r, m=0):
 
     test_stat = float(vals[0]) / vals[r]
     return(test_stat)
+
+def inward(teststat, data, r, m, alpha=.15):
+    outliers = np.zeros(r)
+
+    j = 0
+
+    while (j <r):
+        vals1 = data[j:len(data)]
+        test_stat = teststat(vals1, r, m)
+        if (test_stat > alpha):
+            outliers[j] = vals1[0]
+        else:
+            return(outliers)
+        j +=1
+
+    else:
+        print("error:: please enter 'ss_stat', 'srs_stat', 'ms_stat', 'mrs_stat', or 'dixon' ")
+
+
+def outward(teststat, data, r, m, alpha=.15):
+    outliers = np.zeros(r)
+    j = 0
+
+    while (j <r):
+        vals1 = data[r-j-1:len(data)]
+        test_stat = teststat(vals1, r, m)
+        if (test_stat > alpha):
+            outliers[j] = vals1[0]
+        else:
+            return(outliers)
+        j +=1
+
+    else:
+        print("error:: please enter 'ss_stat', 'srs_stat', 'ms_stat', 'mrs_stat', or 'dixon' ")
+
+    pass
