@@ -3,15 +3,16 @@ import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='DragonKing Program')
-    parser.add_argument('--data_file', '-d', type=int, nargs='+', help='Input file')
+
+    parser.add_argument('--data_file', '-d', type=str, help='Input file')
     parser.add_argument('--outlier_upperbound', '-r', type=int, nargs='+', help='Input file')
-    parser.add_argument('--num_outliers', '-m', type=int, nargs='+', help='Input file')
-    parser.add_argument('--procedure', '-p', type=int, nargs='+', help='Input file')
-    parser.add_argument('--test_statistic', '-t', type=int, nargs='+', help='Input file')
-    parser.add_argument('--alpha', '-a', type=int, nargs='+', help='Input file')
+    parser.add_argument('--num_outliers', '-m', type=int, help='Input file')
+    parser.add_argument('--procedure', '-p', type=boolean, help='Input file')
+    parser.add_argument('--test_statistic', '-t', type=int, help='Input file')
+    parser.add_argument('--alpha', '-a', type=int, help='Input file')
 
     args = parser.parse_args()
-    print(args.data_file(args.integers))
+    print(args.data_file)
 
 
 
