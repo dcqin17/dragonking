@@ -32,7 +32,7 @@ if __name__ == '__main__':
         m = args.num_outliers,
         alpha = args.alpha
     )
-
+#teaparty
     print(outliers1)
 
     outliers2 = dk.outward(
