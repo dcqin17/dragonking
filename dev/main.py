@@ -22,36 +22,36 @@ if __name__ == '__main__':
 
     dataframe = pd.read_csv(args.data_file)
     df_values = dataframe.iloc[ : , : ].values
-    sorted_values = np.sort(df_values.transpose()[0])[::-1]
+    sorted_values = np.sort(df_values.transpose()[0])[::-1]	
+    teststat_dict ={ 
+            "ss_stat": dk.ss_stat,
+            "srs_stat": dk.srs_stat,
+            "ms_stat": dk.ms_stat,
+            "mrs_stat": dk.mrs_stat,
+            "dixon_stat": dk.dixon_stat
+            }
 
-    # Only runs ss_stat currently and is not using args.test_statistic
-    outliers1 = dk.inward(
-        teststat = dk.ss_stat,
+    
+    if args.procedure == "inward":
+        outliers1 = dk.inward(
+        teststat = teststat_dict[args.test_statistic],
         data = sorted_values,
         r = args.outlier_upperbound,
         m = args.num_outliers,
         alpha = args.alpha
-    )
-
-    print(outliers1)
-
-    outliers2 = dk.outward(
-        teststat = dk.ss_stat,
-        data = sorted_values,
-        r = args.outlier_upperbound,
-        m = args.num_outliers,
-        alpha = args.alpha
-    )
-
-    print(outliers2)
-
-
-    '''if args.procedure == "inward":
-        inward(teststat, sorted_values, args.r, args.m, args.alpha=.15)
+        )
+        print(outliers1)
     elif args.procedure == "outward":
-        inward(args.test_statistic, sorted_values, r, m, alpha=.15)
+        outliers2 = dk.outward(
+        teststat = teststat_dict[args.test_statistic],
+        data = sorted_values,
+        r = args.outlier_upperbound,
+        m = args.num_outliers,
+        alpha = args.alpha
+        )
+        print(outliers2) 
     else:
-        print("invalid procedure provided; options are 'inward' and 'outward'")'''
+        print("invalid procedure provided; options are 'inward' and 'outward'")
 
 
     #print(sorted_values)
