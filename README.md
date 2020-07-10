@@ -12,9 +12,17 @@ To install the dragonking python package with pip, simply run:
 pip install dragonking
 ```
 
-## Example use
+## Example usage of the inward procedure (outward is identical).
 
-TBD
+```
+dk.inward(
+  teststat = dk.mrs,
+  data = [0, 0.3, 0.6, 0.31, 0.2, 0.1],
+  r = 1,
+  m = 1,
+  alpha = 0.15
+)
+```
 
 ## Contributions
 
