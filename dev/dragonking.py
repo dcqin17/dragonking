@@ -121,14 +121,15 @@ def dixon_stat(vals, r, m = 0):
     return(test_stat)
 
 def inward(teststat, data, r, m, alpha = .15):
-    outliers = np.zeros(r)
+    outliers = np.zeros((r,2))
 
     j = 0
     while (j < r):
         vals1 = data[j:len(data)]
-        test_stat = teststat(vals1, r, m)
+        test_stat = teststat(vals1, r, m) 
         if (test_stat > alpha):
-            outliers[j] = vals1[0]
+            outliers[j][0] = vals1[0] 
+            outliers[j][1] = test_stat
         else:
             return(outliers)
         j +=1
@@ -137,14 +138,15 @@ def inward(teststat, data, r, m, alpha = .15):
 
 
 def outward(teststat, data, r, m, alpha = .15):
-    outliers = np.zeros(r)
+    outliers = np.zeros((r,2))
     j = 0
 
     while (j < r):
         vals1 = data[r-j-1:len(data)]
         test_stat = teststat(vals1, r, m)
         if (test_stat > alpha):
-            outliers[j] = vals1[0]
+            outliers[j][0] = vals1[0]
+            outliers[j][1] = test_stat
         else:
             return(outliers)
         j +=1
