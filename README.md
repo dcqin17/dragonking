@@ -12,9 +12,25 @@ To install the dragonking python package with pip, simply run:
 pip install dragonking
 ```
 
-## Example use
+## Usage
 
-TBD
+For test statistics, simply type (argument keywords are not required):
+
+```
+dk.mrs(vals = [0, 0.3, 0.6, 0.31, 0.2, 0.1], r = 1, m = 1)
+```
+
+The following example shows how to use the inward procedure (outward is identical).
+
+```
+dk.inward(
+  teststat = dk.mrs,
+  data = [0, 0.3, 0.6, 0.31, 0.2, 0.1],
+  r = 1,
+  m = 1,
+  alpha = 0.15
+)
+```
 
 ## Contributions
 

@@ -22,8 +22,8 @@ if __name__ == '__main__':
 
     dataframe = pd.read_csv(args.data_file)
     df_values = dataframe.iloc[ : , : ].values
-    sorted_values = np.sort(df_values.transpose()[0])[::-1]	
-    teststat_dict ={ 
+    sorted_values = np.sort(df_values.transpose()[0])[::-1]
+    teststat_dict ={
             "ss_stat": dk.ss_stat,
             "srs_stat": dk.srs_stat,
             "ms_stat": dk.ms_stat,
@@ -31,29 +31,29 @@ if __name__ == '__main__':
             "dixon_stat": dk.dixon_stat
             }
 
-    
+
     if args.procedure == "inward":
         outliers1 = dk.inward(
-        teststat = teststat_dict[args.test_statistic],
-        data = sorted_values,
-        r = args.outlier_upperbound,
-        m = args.num_outliers,
-        alpha = args.alpha
+            teststat = teststat_dict[args.test_statistic],
+            data = sorted_values,
+            r = args.outlier_upperbound,
+            m = args.num_outliers,
+            alpha = args.alpha
         )
         print(outliers1)
     elif args.procedure == "outward":
         outliers2 = dk.outward(
-        teststat = teststat_dict[args.test_statistic],
-        data = sorted_values,
-        r = args.outlier_upperbound,
-        m = args.num_outliers,
-        alpha = args.alpha
+            teststat = teststat_dict[args.test_statistic],
+            data = sorted_values,
+            r = args.outlier_upperbound,
+            m = args.num_outliers,
+            alpha = args.alpha
         )
-        print(outliers2) 
+        print(outliers2)
     else:
         print("invalid procedure provided; options are 'inward' and 'outward'")
 
 
     #print(sorted_values)
 
-# python main.py -d sample1.csv -r 3 -m 3 -p inward -t ss_stat -a 0.15
+# python main.py -d data/sample1.tsv -r 3 -m 3 -p inward -t ss_stat -a 0.15
