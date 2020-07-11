@@ -14,6 +14,12 @@ pip install dragonking
 
 ## Usage
 
+For test statistics, simply type (argument keywords are not required):
+
+```
+dk.mrs(vals = [0, 0.3, 0.6, 0.31, 0.2, 0.1], r = 1, m = 1)
+```
+
 The following example shows how to use the inward procedure (outward is identical).
 
 ```
