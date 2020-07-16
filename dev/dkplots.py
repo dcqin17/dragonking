@@ -1,12 +1,49 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.special import betainc
 
-def dkplot(pops):
-    xs = np.log10(pops)
-    ys = np.log10(np.cumsum(xs[::-1])[::-1] / sum(xs))
-    #ys[-1] = np.log10(0.0015)
-    plt.scatter(xs, ys)
-    print(ys)
+# Plot 1
+# Sorted in reverse order and subtracted log(h) to get points closer to actual
+# plot
+def plot1(pops, h):
+    xs = np.log(pops)
+    ys = (np.cumsum(xs[::-1])[::-1]-np.log(h)) / sum(xs)
+    #fig, ax = plt.subplots()
+    plt.loglog(pops, ys, 'o', basex = 10)
+    plt.show()
+
+
+def plot2(pops, b, h):
+    xs = []
+    ys = []
+
+    for i,pop in enumerate(pops):
+        xs.append(i+1)
+        Fx = 1 - np.exp(-b * (np.log(pop)-np.log(h)))
+        ys.append(betainc(i + 1, len(pops) - i, Fx))
+
+    xs = np.array(xs)
+    ys = np.array(ys)
+
+    plt.plot(xs, 1-ys[::-1], '-')
+    plt.show()
+
+# Strange Error Function
+def plot21(pops, b, h):
+    pops[::-1].sort()
+    xs = []
+    ys = []
+
+    for i,pop in enumerate(pops):
+        xs.append(i+1)
+        Fx = 1 - np.exp(-b * (np.log(pop)-np.log(h)))
+        print(np.log(pop)-h, Fx)
+        ys.append(betainc(i + 1, len(pops) - i, Fx))
+
+    xs = np.array(xs)
+    ys = np.array(ys)
+
+    plt.plot(xs, 1-ys[::-1], '-')
     plt.show()
 
 if __name__ == '__main__':
@@ -21,8 +58,7 @@ if __name__ == '__main__':
         GBdata[i] = float(pop.strip().replace(',', ''))
 
     GBdata = np.array(GBdata, dtype = np.float)
-    #GBdata[::-1].sort()
     GBdata.sort()
 
-    #dkplot(GBdata,1.502,50300)
-    dkplot(GBdata)
+    plot1(GBdata, 50300)
+    plot2(GBdata, 1.502, 50300)
