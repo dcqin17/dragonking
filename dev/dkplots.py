@@ -5,11 +5,15 @@ from scipy.special import betainc
 # Plot 1
 # Sorted in reverse order and subtracted log(h) to get points closer to actual
 # plot
-def plot1(pops, h):
+def plot1(pops, b, h):
     xs = np.log(pops)
     ys = (np.cumsum(xs[::-1])[::-1]-np.log(h)) / sum(xs)
-    #fig, ax = plt.subplots()
     plt.loglog(pops, ys, 'o', basex = 10)
+
+    # Trendline
+    trendxs = np.linspace(4*10**4, 10**7, num=100)
+    trendys = np.exp(-b*(np.log(trendxs)-np.log(h)))
+    plt.plot(trendxs, trendys, '-')
     plt.show()
 
 
@@ -60,5 +64,5 @@ if __name__ == '__main__':
     GBdata = np.array(GBdata, dtype = np.float)
     GBdata.sort()
 
-    plot1(GBdata, 50300)
+    plot1(GBdata, 1.502, 50300)
     plot2(GBdata, 1.502, 50300)
