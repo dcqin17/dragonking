@@ -62,6 +62,7 @@ if __name__ == '__main__':
         GBdata[i] = float(pop.strip().replace(',', ''))
 
     GBdata = np.array(GBdata, dtype = np.float)
+
     GBdata.sort()
 
     plot1(GBdata, 1.502, 50300)

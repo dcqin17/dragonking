@@ -1,4 +1,7 @@
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import f
 
 def ss_stat(vals, r, m=0):
     """Calculates sum-sum test statistic.
@@ -152,22 +155,22 @@ def outward(teststat, data, r, m, alpha = .15):
     return outliers
 
 
+def dk_test(vals,r, m = 0 ,alpha = .15):
+    
+    """Calculates DK test statistic.
+    
+    Use DK test statistic to determine whehter there is
+    significant support for the existence of DKs in dataset.
+    Also can detect negative DKs
+    
+    Parameters:
+    vals (array): Single variable array with values in decreasing order
+    r (int): Hypothesized number of DKs in dataset    
+    
+    Returns:
+        list: [DK statistic, p-value]
+    """
 
-
-
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Aug 01 15:07:16 2018
-
-@author: Daniel
-
-
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.stats import f
-
-def dk_test(vals,r):
     r = int(r)
     n = len(vals)
     x = np.zeros(n)
@@ -196,6 +199,7 @@ def dk_test(vals,r):
     print(ans)
     return(ans)
 
+"""
 dk_file1 = pd.read_csv('DK-file.csv')
 dkvalues1 = dk_file1.iloc[ : , : ].values
 #plt.hist(dkvalues1)
