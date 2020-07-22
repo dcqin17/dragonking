@@ -176,10 +176,11 @@ def dk_test(vals,r, m = 0 ,alpha = .15):
     x = np.zeros(n)
     y = np.zeros(n)
     z = np.zeros(n)
-    for j in range(0, n):
-        x[j] = vals[j][0]
-    x = np.sort(x)[ : :-1]
+#    for j in range(0, n):
+#        x[j] = vals[j][0]
+#   x = np.sort(x)[ : :-1]
 
+    x = np.sort(vals)[::-1]        
     for i in range(0, n):
         if i == n - 1:
             y[i] = x[i]
@@ -208,6 +209,9 @@ dk_file2 = pd.read_csv('DK-file2.csv')
 dkvalues2 = dk_file2.iloc[ : , : ].values
 #splt.hist(dkvalues2)
 
-dk_test(dkvalues1, 3)
-dk_test(dkvalues2, 3)
+#dk_test(dkvalues1, 3)
+#dk_test(dkvalues2, 3)
+
+for i,val in enumerate(vals):
+    dktest(vals,i)
 """

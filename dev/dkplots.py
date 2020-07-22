@@ -48,7 +48,7 @@ def plot21(pops, b, h):
 
 if __name__ == '__main__':
     GBdata = []
-    with open('data/pop.tsv', 'r') as fin:
+        with open('data/pop.tsv', 'r') as fin:
         for line in fin:
             GBdata.append(line)
 
